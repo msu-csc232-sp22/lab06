@@ -92,6 +92,7 @@ Write a client function that merges two bags into a new third bag. Do not destro
 - the function shall have two parameters, both passed by const ref, of type `ArrayBag<T>`
 - the function shall return a third bag, also of type `ArrayBag<T>` whose contents is the result of merging the contents of the two given bags.
 - if the two given bags contain the same item, the merged bag shall contain both (duplicate) items. That is, think of the merge as the [union](https://en.wikipedia.org/wiki/Union_(set_theory)) of the two given bags.
+- a precondition of this method is that the number of items in both bags does not exceed the maximum capacity of the ArrayBag ADT.
 
 ## Submission Details
 
