@@ -17,10 +17,255 @@
 
 static int possiblePoints { 0 };
 static int earnedPoints { 0 };
-static const int PC_POINTS { 100 }; // Set to 2 for labs, 3 for homework
+static const int PC_POINTS { 2 }; // Set to 2 for labs, 3 for homework
 
 namespace
 {
+#if TEST_TASK1
+
+    TEST(Task1TestFixture, ValidateSumOfEmptyBag)
+    {
+        possiblePoints += 1;
+
+        ArrayBag<int> empty{};
+        int expected{0};
+        int actual{csc232::sum_contents_of(empty)};
+
+        EXPECT_EQ(expected, actual);
+
+        if ( !HasFailure( ) )
+        {
+            earnedPoints += 1;
+        }
+    }
+
+    TEST(Task1TestFixture, ValidateSumOfBagWithOneItem)
+    {
+        possiblePoints += 1;
+
+        ArrayBag<int> bag{};
+        int expected{5};
+        bag.add(expected);
+        int actual{csc232::sum_contents_of(bag)};
+
+        EXPECT_EQ(expected, actual);
+
+        if ( !HasFailure( ) )
+        {
+            earnedPoints += 1;
+        }
+    }
+
+    TEST(Task1TestFixture, ValidateSumOfFullBag)
+    {
+        possiblePoints += 1;
+
+        ArrayBag<int> bag{};
+        int expected{0};
+        for ( int entry{ 0}; entry < 6; ++entry)
+        {
+            expected += entry;
+            bag.add(entry);
+        }
+        int actual{csc232::sum_contents_of(bag)};
+
+        EXPECT_EQ(expected, actual);
+
+        if ( !HasFailure( ) )
+        {
+            earnedPoints += 1;
+        }
+    }
+
+    TEST(Task1TestFixture, ValidateSumOfBagWhoseContentsAddToZero)
+    {
+        possiblePoints += 1;
+
+        ArrayBag<int> bag{};
+        int expected{0};
+        bag.add(1);
+        bag.add(-1);
+        bag.add(2);
+        bag.add(-2);
+        bag.add(3);
+        bag.add(-3);
+        int actual{csc232::sum_contents_of(bag)};
+
+        EXPECT_EQ(expected, actual);
+
+        if ( !HasFailure( ) )
+        {
+            earnedPoints += 1;
+        }
+    }
+
+    TEST(Task1TestFixture, ValidateSumOfBagWhoseSumIsNegative)
+    {
+        possiblePoints += 1;
+
+        ArrayBag<int> bag{};
+        int expected{-6};
+        for ( int entry{ 0}; entry < 6; ++entry)
+        {
+            bag.add(-1);
+        }
+        int actual{csc232::sum_contents_of(bag)};
+
+        EXPECT_EQ(expected, actual);
+
+        if ( !HasFailure( ) )
+        {
+            earnedPoints += 1;
+        }
+    }
+
+#endif
+
+#if TEST_TASK2
+
+    TEST(Task2TestFixture, ValidateSuccessfulReplacement)
+    {
+        possiblePoints += 1;
+
+        ArrayBag<std::string> bag{};
+        std::string target{"CSC232"};
+        std::string replacement{"Data Structures"};
+        bag.add(target);
+        bool result{csc232::replace_item(bag, target, replacement)};
+
+        EXPECT_TRUE(result);
+
+        if ( !HasFailure( ) )
+        {
+            earnedPoints += 1;
+        }
+    }
+
+    TEST(Task2TestFixture, ValidateUnsuccessfulReplacementInEmptyBag)
+    {
+        possiblePoints += 1;
+
+        ArrayBag<std::string> bag{};
+        std::string target{"CSC232"};
+        std::string replacement{"Data Structures"};
+        bool result{csc232::replace_item(bag, target, replacement)};
+
+        EXPECT_FALSE(result);
+
+        if ( !HasFailure( ) )
+        {
+            earnedPoints += 1;
+        }
+    }
+
+    TEST(Task2TestFixture, ValidateUnsuccessfulReplacementOfMissingTarget)
+    {
+        possiblePoints += 1;
+
+        ArrayBag<std::string> bag{};
+        std::string item{"csc232"};
+        bag.add(item);
+        std::string target{"CSC232"};
+        std::string replacement{"Data Structures"};
+        bool result{csc232::replace_item(bag, target, replacement)};
+
+        EXPECT_FALSE(result);
+        EXPECT_FALSE(bag.contains(target));
+        EXPECT_FALSE(bag.contains(replacement));
+        EXPECT_TRUE(bag.contains(item));
+
+        if ( !HasFailure( ) )
+        {
+            earnedPoints += 1;
+        }
+    }
+
+#endif
+
+#if TEST_TASK3
+
+    TEST(Task3TestFixture, ValidateMergeOfEmptyBags)
+    {
+        possiblePoints += 1;
+
+        ArrayBag<double> bag1;
+        ArrayBag<double> bag2;
+
+        ArrayBag<double> merged{csc232::merge(bag1, bag2)};
+
+        EXPECT_TRUE(merged.isEmpty());
+
+        if ( !HasFailure( ) )
+        {
+            earnedPoints += 1;
+        }
+    }
+
+    TEST(Task3TestFixture, ValidateMergeOfEmptyBagWithNonEmptyBag)
+    {
+        possiblePoints += 1;
+
+        ArrayBag<double> bag1;
+        ArrayBag<double> bag2;
+        double item{3.14};
+        bag2.add(item);
+
+        ArrayBag<double> merged{csc232::merge(bag1, bag2)};
+
+        EXPECT_FALSE(merged.isEmpty());
+        EXPECT_TRUE(merged.contains(item));
+
+        if ( !HasFailure( ) )
+        {
+            earnedPoints += 1;
+        }
+    }
+
+    TEST(Task3TestFixture, ValidateMergeOfNonEmptyBagWithEmptyBag)
+    {
+        possiblePoints += 1;
+
+        ArrayBag<double> bag1;
+        ArrayBag<double> bag2;
+        double item{3.14};
+        bag1.add(item);
+
+        ArrayBag<double> merged{csc232::merge(bag1, bag2)};
+
+        EXPECT_FALSE(merged.isEmpty());
+        EXPECT_TRUE(merged.contains(item));
+
+        if ( !HasFailure( ) )
+        {
+            earnedPoints += 1;
+        }
+    }
+
+    TEST(Task3TestFixture, ValidateMergeOfNonEmptyBags)
+    {
+        possiblePoints += 1;
+
+        ArrayBag<double> bag1;
+        ArrayBag<double> bag2;
+        double item{3.14};
+        bag1.add(item);
+        bag2.add(item);
+
+        ArrayBag<double> merged{csc232::merge(bag1, bag2)};
+
+        EXPECT_FALSE(merged.isEmpty());
+        EXPECT_TRUE(merged.contains(item));
+        EXPECT_EQ(merged.getFrequencyOf(item), 2);
+
+        if ( !HasFailure( ) )
+        {
+            earnedPoints += 1;
+        }
+    }
+
+#endif
+
+#if EXECUTE_TEST_FIXTURE
     class ArrayBagTestFixture : public ::testing::Test
     {
     protected:
@@ -385,6 +630,8 @@ namespace
         EXPECT_EQ( result, EXPECTED_FREQUENCY);
     }
 
+#endif // EXECUTE_TEST_FIXTURE
+
 } // namespace for fixture
 
 
@@ -401,7 +648,7 @@ int main ( int argc, char** argv )
         correctness_points = ( static_cast<double>(earnedPoints) / possiblePoints ) * PC_POINTS;
     }
 
-    std::cout << "Percent Passing:    " << std::fixed << std::setprecision( 2 )
-              << correctness_points << "%" << std::endl;
+    std::cout << "Correctness Points:  " << std::fixed << std::setprecision( 2 )
+              << correctness_points << std::endl;
     return result;
 }

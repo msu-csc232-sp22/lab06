@@ -22,6 +22,7 @@
 #define TEST_TASK1 FALSE
 #define TEST_TASK2 FALSE
 #define TEST_TASK3 FALSE
+#define EXECUTE_TEST_FIXTURE FALSE
 
 #include <algorithm>
 #include <cassert>
