@@ -50,6 +50,13 @@ Consider a bag of integers. Write a client function that computes the sum of int
 4. Use the `google-tests` target to test your solution.
 5. When you have completed this task to your satisfaction, stage, commit and push your changes to GitHub.
 
+**Development Notes**
+
+- the name of this function shall be `sum_contents_of`
+- the function shall have one parameter, passed by const ref, of type `ArrayBag<T>`, where `T` is a function template parameter
+- the function shall return a value of type `int`
+- if the given `ArrayBag` parameter is empty, the function shall return a value of 0
+
 ### Task 2: Exercise 3.2
 
 Write a client function that replaces a given item with another given item. The function should return a boolean value to indicate whether the replacement was successful.
@@ -60,6 +67,15 @@ Write a client function that replaces a given item with another given item. The 
 4. Use the `google-tests` target to test your solution.
 5. When you have completed this task to your satisfaction, stage, commit and push your changes to GitHub.
 
+**Development Notes**
+
+- the name of this function shall be `replace_item`
+- the function shall have three parameters,
+  - the first shall be passed by ref, of type `ArrayBag<T>`, where `T` is a function template parameter
+  - the second shall be passed by const ref of type `T` that is the target to be replaced
+  - the third shall be passed by const ref of type `T` that is the replacement for the given target
+- the function shall return a value of type `bool` which will be `true` if the replacement was successful; `false` otherwise
+
 ### Task 3: Exercise 3.7
 
 Write a client function that merges two bags into a new third bag. Do not destroy the original two bags.
@@ -69,6 +85,13 @@ Write a client function that merges two bags into a new third bag. Do not destro
 3. Implement your function.
 4. Use the `google-tests` target to test your solution.
 5. When you have completed this task to your satisfaction, stage, commit and push your changes to GitHub.
+
+**Development Notes**
+
+- the name of this function shall be `merge`
+- the function shall have two parameters, both passed by const ref, of type `ArrayBag<T>`
+- the function shall return a third bag, also of type `ArrayBag<T>` whose contents is the result of merging the contents of the two given bags.
+- if the two given bags contain the same item, the merged bag shall contain both (duplicate) items. That is, think of the merge as the [union](https://en.wikipedia.org/wiki/Union_(set_theory)) of the two given bags.
 
 ## Submission Details
 
