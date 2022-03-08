@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.16.3-3.22.1)
-# TODO: Search and replace adt_bag with appropriate values in this file
-project(adt_bag)
+project(lab06)
 
 # Set compiler flags based on environment
 if (MSVC)
