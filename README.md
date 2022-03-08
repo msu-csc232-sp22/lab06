@@ -45,18 +45,30 @@ There are three tasks in this lab that correspond to the solutions for the three
 Consider a bag of integers. Write a client function that computes the sum of integers in the bag `aBag`.
 
 1. Toggle the macro definition of `TEST_TASK1` from `FALSE` to `TRUE`.
+2. Locate the `TODO` identifying the location where you are to write the client function for this task.
+3. Implement your function.
+4. Use the `google-tests` target to test your solution.
+5. When you have completed this task to your satisfaction, stage, commit and push your changes to GitHub.
 
 ### Task 2: Exercise 3.2
 
 Write a client function that replaces a given item with another given item. The function should return a boolean value to indicate whether the replacement was successful.
 
 1. Toggle the macro definition of `TEST_TASK2` from `FALSE` to `TRUE`.
+2. Locate the `TODO` identifying the location where you are to write the client function for this task.
+3. Implement your function.
+4. Use the `google-tests` target to test your solution.
+5. When you have completed this task to your satisfaction, stage, commit and push your changes to GitHub.
 
 ### Task 3: Exercise 3.7
 
 Write a client function that merges two bags into a new third bag. Do not destroy the original two bags.
 
 1. Toggle the macro definition of `TEST_TASK3` from `FALSE` to `TRUE`.
+2. Locate the `TODO` identifying the location where you are to write the client function for this task.
+3. Implement your function.
+4. Use the `google-tests` target to test your solution.
+5. When you have completed this task to your satisfaction, stage, commit and push your changes to GitHub.
 
 ## Submission Details
 

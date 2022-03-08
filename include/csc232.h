@@ -67,6 +67,12 @@ namespace csc232
 {
     // Add any user-defined functions prescribed in your assignment below
 
+    // TODO: Implement the function needed to address Exercise 3.1 below.
+
+    // TODO: Implement the function needed to address Exercise 3.2 below.
+
+    // TODO: Implement the function needed to address Exercise 3.7 below.
+
     // DO NOT Modify anything below this line
     int Preamble(int argc, char* argv[])
     {
